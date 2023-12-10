@@ -72,3 +72,14 @@
 1,iPhone 15,999.99,Electronics,Apple
 2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
 6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel

@@ -80,16 +80,74 @@ public static List<String>  getFileData(String fileName) {
 	}
 		  return br;
 	  }
-    public static void writeToFile(String filename, ItemBuilder itemBuilder) {
+//    public static void writeToFile(String filename, ItemBuilder itemBuilder) {
+//        try {
+//            FileWriter fw = new FileWriter(filename, true);
+//            BufferedWriter bw = new BufferedWriter(fw);
+//            PrintWriter out = new PrintWriter(bw);
+//            out.println(itemBuilder.getItemID());
+//            out.println(itemBuilder.getItemName());
+//            out.println(itemBuilder.getItemPrice());
+//            out.println(itemBuilder.getItemCategory());
+//            out.println(itemBuilder.getItemManufact());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public static void newFile(String filename) {
         try {
+            // Delete existing file
+            File existingFile = new File(filename);
+            if (existingFile.exists()) {
+                existingFile.delete();
+            }
+
+            // Create a new file
+            existingFile.createNewFile();
+
             FileWriter fw = new FileWriter(filename, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
-            out.println(itemBuilder.getItemID());
-            out.println(itemBuilder.getItemName());
-            out.println(itemBuilder.getItemPrice());
-            out.println(itemBuilder.getItemCategory());
-            out.println(itemBuilder.getItemManufact());
+
+            out.println("ItemID,ItemName,ItemPrice,ItemCategory,ItemManufact");
+
+            out.close();
+            bw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeToFile(String filename, ItemBuilder itemBuilder, boolean createHeader) {
+        try {
+            // Delete existing file
+            File existingFile = new File(filename);
+            if (existingFile.exists()) {
+                existingFile.delete();
+            }
+
+            // Create a new file
+            existingFile.createNewFile();
+
+            FileWriter fw = new FileWriter(filename, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw);
+
+            // Check if headers need to be created
+            if (createHeader) {
+                out.println("ItemID,ItemName,ItemPrice,ItemCategory,ItemManufact");
+            }
+
+            out.println(itemBuilder.getItemID() + ","
+                    + itemBuilder.getItemName() + ","
+                    + itemBuilder.getItemPrice() + ","
+                    + itemBuilder.getItemCategory() + ","
+                    + itemBuilder.getItemManufact());
+
+            out.close();
+            bw.close();
+            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

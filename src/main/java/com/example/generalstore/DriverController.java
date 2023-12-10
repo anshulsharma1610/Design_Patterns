@@ -1,12 +1,11 @@
 package com.example.generalstore;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import java.util.List;
 
-public class HelloController {
+public class DriverController {
     @FXML
     private TextField myTextField; // The TextField you want to update
     @FXML
@@ -14,7 +13,7 @@ public class HelloController {
 
     private ItemStore itemStore; // Instance of ItemStore
 
-    public HelloController() {
+    public DriverController() {
         // Initialize the ItemStore when the controller is created
         itemStore = new ItemStore("Best Buy");
     }

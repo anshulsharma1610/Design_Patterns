@@ -29,7 +29,7 @@ public class ItemStore implements ShopStateAPI {
     private List<Item> itemList = new ArrayList<>();
     private List<Person> personList = new ArrayList<>();
     public static DiscountStrategy usingStrategy = DiscountStrategy.NONE;
-    private static final String FILE_NAME = "src/main/java/com/example/generalstore/inputData/details.txt";
+    private static final String FILE_NAME = "src/main/java/com/example/generalstore/inputData/details.csv";
 	
 	private ShopStateAPI openState = new OpenState(this);
 	private ShopStateAPI stockState = new StockState(this);
@@ -320,38 +320,4 @@ public class ItemStore implements ShopStateAPI {
 
 		return outputList;
 	}
-
-//	public void demo(String pattern) {
-//		switch (pattern) {
-//			case "Adapter":
-//				demonstrateAdapterPattern();
-//				break;
-//			case "Builder":
-//				demonstrateBuilderPattern();
-//				break;
-//			case "Command":
-//				demonstrateCommandPattern();
-//				break;
-//			case "Decorator":
-//				demonstrateDecoratorPattern();
-//				break;
-//			case "Facade":
-//				demonstrateFacadePattern();
-//				break;
-//			case "Factory":
-//				demonstrateFactoryPattern();
-//				break;
-//			case "Observer":
-//				demonstrateObserverPattern();
-//				break;
-//			case "Prototype":
-//				demonstratePrototypePattern();
-//				break;
-//			case "State":
-//				demonstrateStatePattern();
-//				break;
-//			default:
-//				System.out.println("Invalid pattern name.");
-//		}
-//	}
 }
