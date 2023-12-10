@@ -1,0 +1,74 @@
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+3,Lenovo - Ideapad 1 14.0" HD Laptop,119.99,Computers_Tablets,Lenovo
+4,Canon - EOS R5 Mirrorless Camera,2999.99,Cameras,Canon
+5,Apple - AirPods Max,449.99,Electronics,Apple
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+1,iPhone 15,999.99,Electronics,Apple
+2,Samsung - 75" UHD 4K Smart Tizen TV,549.99,Appliances,Samsung
+6,Avengers - Infinity War,13.99,Movies_Music,Marvel
