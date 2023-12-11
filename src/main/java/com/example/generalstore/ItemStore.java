@@ -29,7 +29,7 @@ public class ItemStore implements ShopStateAPI {
     private List<Item> itemList = new ArrayList<>();
     private List<Person> personList = new ArrayList<>();
     public static DiscountStrategy usingStrategy = DiscountStrategy.NONE;
-    private static final String FILE_NAME = "src/main/java/com/example/generalstore/inputData/details.csv";
+    private static final String FILE_NAME = "src/main/java/com/example/generalstore/output/details.csv";
 	
 	private ShopStateAPI openState = new OpenState(this);
 	private ShopStateAPI stockState = new StockState(this);
