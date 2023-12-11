@@ -64,7 +64,7 @@ public class Item implements ItemAPI {
 	@Override
 	public String itemDescription() {
 		// TODO Auto-generated method stub
-		return this.itemName + ", of category "+this.itemCategory;
+		return this.itemName + ", "+this.itemCategory;
 	}
 
 

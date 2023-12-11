@@ -302,7 +302,42 @@ public static List<String>  getFileData(String fileName) {
         new File(tempFileName).renameTo(new File(fileName));
     }
 
- 
+
+    public static void createOrder(String fileName, List<ItemAPI> items, double discount, double shippingCost, double orderCost) {
+        FileWriter fr= null;
+        BufferedWriter bw = null ;
+        try {
+            fr = new FileWriter(fileName,true);
+            bw = new BufferedWriter(fr);
+
+            for (ItemAPI item : items) {
+                // Customize the format based on your needs
+                bw.append(item.itemDescription() + ",");
+                bw.append(item.getItemPrice() + ",");
+                bw.append(item.getItemManufact() + "\n");
+            }
+
+            // Write header for additional information
+            bw.append("\n" + "Discount,").append("Shipping Cost,").append("Order Cost\n");
+
+            // Write discount, shipping cost, and order cost
+            bw.append(discount + ",").append(shippingCost + ",").append(orderCost + "\n");
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, "error while reading the file", ex);
+        }
+        finally{
+            try {
+                if(bw !=null){
+                    bw.close();
+                }
+                if(fr!= null){
+                    fr.close();
+                }
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "erroe while closing the file", ex);
+            }
+        }
+    }
 }
 
 

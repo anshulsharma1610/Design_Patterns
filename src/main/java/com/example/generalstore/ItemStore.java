@@ -231,10 +231,17 @@ public class ItemStore implements ShopStateAPI {
 
 		// Your Command Pattern demonstration code here
 		//Command Pattern
-		outputList.add("Demonstration of Command pattern to send the request for all Items orders and print them");
+		outputList.add("Command pattern to send the request for all Items orders and print them");
 		outputList.add("-------------------------------------------------------------------------");
 		Invoker invoker = new Invoker();
+		// Placing orders for items
+		outputList.add("Placing orders for items:");
+		outputList.add("------------------------");
 		outputList.add(invoker.placeOrders(itemList));
+
+		// Renting orders for items
+		outputList.add("\nRenting orders for items:");
+		outputList.add("------------------------");
 		outputList.add(invoker.rentOrders(itemList2));
 		return outputList;
 	}
@@ -254,8 +261,8 @@ public class ItemStore implements ShopStateAPI {
 		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 
-		outputList.add("Demonstration of Facade pattern and adding Decorator pattern to decorate Items and adding it to our order list");
-		outputList.add("Demonstration of Observer pattern to notify the shipping cost and discount observer of changes as the number of our orders added into order list");
+		outputList.add("Facade pattern and adding Decorator pattern to decorate Items and adding it to our order list");
+		outputList.add("Observer pattern to notify the shipping cost and discount observer of changes as the number of our orders added into order list");
 		outputList.add("-------------------------------------------------------------------------");
 
 		OrderFacade orderFacade = new OrderFacade(item);
@@ -266,21 +273,26 @@ public class ItemStore implements ShopStateAPI {
 		itemBuilder = new ItemBuilder(2, "Samsung - 75\" UHD 4K Smart Tizen TV", 549.99, ItemCategory.Appliances, "Samsung");
 		item = ItemFactory.getInstance().getObject(itemBuilder);
 		order.addItem(item);
-		outputList.add(order.toString());
+		outputList.add("Added Item to Order:\n" + order.toString());
 		itemList.add((Item)item);
 
 		itemBuilder = new ItemBuilder(3, "Lenovo - Ideapad 1 14.0\" HD Laptop", 119.99, ItemCategory.Computers_Tablets, "Lenovo");
 		item = ItemFactory.getInstance().getObject(itemBuilder);
 		order.addItem(item);
-		outputList.add(String.valueOf(order));
-		itemList2.add((Item)item);
-		FileUtil.createOrder(ORDER_FILE, order.getItemList());
+		outputList.add("Added Item to Order:\n" + order.toString());
+		itemList.add((Item)item);
 
-		outputList.add(order.toString());
-		outputList.add(order.getItemListString());
-		outputList.add("Discount: " +  String.valueOf(order.getDiscount()));
-		outputList.add("Shipping Cost: " +  String.valueOf(order.getShippingCost()));
-		outputList.add("Total Order Cost: " +  String.valueOf(order.getOrderCost()));
+		// Create the order file
+		FileUtil.createOrder(ORDER_FILE, order.getItemList(), order.getDiscount(), order.getShippingCost(), order.getOrderCost());
+
+		// Display order details
+		outputList.add("\n---------------------------------------------------");
+		outputList.add("Order Details:\n" + order.toString());
+		outputList.add("Items in Order:\n" + order.getItemListString());
+		outputList.add("Discount: " + String.valueOf(order.getDiscount()));
+		outputList.add("Shipping Cost: " + String.valueOf(order.getShippingCost()));
+		outputList.add("Total Order Cost: " + String.valueOf(order.getOrderCost()));
+
 		return outputList;
 	}
 
@@ -289,12 +301,14 @@ public class ItemStore implements ShopStateAPI {
 	public List<String> demonstrateFactoryPattern() {
 		// Your Factory Pattern demonstration code here
 		List<String> outputList = new LinkedList<>();
+		// Factory Pattern Demonstration
+		outputList.add("Factory pattern with Singleton pattern");
+		outputList.add("-------------------------------------------------------------------------");
 
 		ItemStore itmStr = new ItemStore("Best Buy");
 		EmployeeBuilder emplBuilder = new EmployeeBuilder(7, 27, "Anshul", "Sharma", 50.00);
 		Employee empl = EmployeeFactory.getInstance().getObject(emplBuilder);
 		outputList.add("Using Factory and singleton pattern to get only single instance of Employee Builder object");
-		outputList.add("-------------------------------------------------------------------------");
 		outputList.add(empl.toString());
 		return outputList;
 	}
@@ -315,12 +329,16 @@ public class ItemStore implements ShopStateAPI {
 
 		order.setDeliveryType(DeliveryType.Delivery);
 
-		outputList.add("Demonstration of state pattern completed life cycle of order transitioning from ordered to delivered state");
+		outputList.add("State pattern: Completed life cycle of order transitioning from ordered to delivered state");
+		outputList.add("-------------------------------------------------------------------------");
 
-		outputList.add(order.state_Awaiting_OrderConfirmation());
-		outputList.add(order.state_OrderConfirmed());
-		outputList.add(order.state_OrderDispatched());
-		outputList.add(order.state_OrderDelivered());
+		// Display order state transitions with purpose
+		outputList.add("Order State Transitions:");
+		outputList.add("-------------------------------------------------------------------------");
+		outputList.add("1. " + order.state_Awaiting_OrderConfirmation() + " (Order placed, awaiting confirmation)");
+		outputList.add("2. " + order.state_OrderConfirmed() + " (Order confirmed, awaiting dispatch)");
+		outputList.add("3. " + order.state_OrderDispatched() + " (Order dispatched, in transit)");
+		outputList.add("4. " + order.state_OrderDelivered() + " (Order delivered, completed)");
 		outputList.add("Order states transitioned successfully.");
 		return outputList;
 	}
@@ -328,17 +346,24 @@ public class ItemStore implements ShopStateAPI {
 	public List<String> demonstrateStrategyPattern() {
 		// Strategy Pattern Demonstration
 		List<String> outputList = new LinkedList<>();
+
+		outputList.add("Strategy pattern: Applying different discounts to original and final prices after student and employee discounts");
+		outputList.add("-------------------------------------------------------------------------");
+
+		// Create an item for demonstration
 		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 
-		outputList.add("Demonstration of strategy pattern to show different discounts applied to original price and final price after student and employee discounts");
+		// Print original item details
 		outputList.add("Item before discount: \n" + item.toString());
+
+		// Apply different discounts during a sale
 		double price;
 		ItemStore itmStr = new ItemStore("Best Buy");
 		for(DiscountStrategy strategy : ItemStore.getAlgorithmMap().keySet()){
 			itmStr.setUsingStrategy(strategy);
 			price = ((Item)item).runStrategy();
-			outputList.add("Item price after discount during sale: " + strategy + " - " + price);
+			outputList.add("Item price after discount during sale (" + strategy + "): " + price);
 		}
 		return outputList;
 	}

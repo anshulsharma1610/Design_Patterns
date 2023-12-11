@@ -14,7 +14,7 @@ public class GiftDecorator extends ItemDecorator {
 	@Override
 	public String itemDescription() {
 		// TODO Auto-generated method stub
-		return decoratedItem.itemDescription()+ "..Wrapped for gift";
+		return decoratedItem.itemDescription()+ " - Wrapped for gift - ";
 	}
 
 	@Override
