@@ -13,7 +13,7 @@ public class Driver extends Application {
         final String FILE_NAME = "src/main/java/com/example/generalstore/output/details.csv";
         FileUtil.newFile(FILE_NAME);
         FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 920, 740);
+        Scene scene = new Scene(fxmlLoader.load(), 920, 700);
         stage.setScene(scene);
         stage.show();
     }
