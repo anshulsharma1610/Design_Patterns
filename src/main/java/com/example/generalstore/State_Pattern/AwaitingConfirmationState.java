@@ -13,24 +13,24 @@ public class AwaitingConfirmationState implements OrderStateAPI{
 	}
 
 	@Override
-	public void state_Awaiting_OrderConfirmation() {
-		System.out.println("Error ... Already in Awaiting State");
+	public String state_Awaiting_OrderConfirmation() {
+		return "Error - Already in Awaiting State";
 	}
 
 	@Override
-	public void state_OrderConfirmed() {
+	public String state_OrderConfirmed() {
 		order.setState(order.getOrderConfirmed());
-		System.out.println("SUCCESS!! Order moved to Confirmed State");		
+		return "SUCCESS!! Order moved to Confirmed State";
 	}
 
 	@Override
-	public void state_OrderDispatched() {
-		System.out.println("Error ... Order not yet CONFIRMED");		
+	public String state_OrderDispatched() {
+		return "Error - Order not yet CONFIRMED";
 	}
 
 	@Override
-	public void state_OrderDelivered() {
-		System.out.println("Error ... Order not yet CONFIRMED or DISPATCHED");
+	public String state_OrderDelivered() {
+		return "Error - Order not yet CONFIRMED or DISPATCHED";
 	}
 
 }

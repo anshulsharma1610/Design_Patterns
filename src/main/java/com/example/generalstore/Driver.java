@@ -10,10 +10,10 @@ import java.io.IOException;
 public class Driver extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        final String FILE_NAME = "src/main/java/com/example/generalstore/output/details.csv";
-        FileUtil.newFile(FILE_NAME);
+        final String ITEM_FILE = "src/main/java/com/example/generalstore/output/items.csv";
+        FileUtil.newFile(ITEM_FILE);
         FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 920, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         stage.setScene(scene);
         stage.show();
     }

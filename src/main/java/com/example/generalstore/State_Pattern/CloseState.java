@@ -13,24 +13,23 @@ public class CloseState implements ShopStateAPI {
 	}
 	
 	@Override
-	public void state_Open() {
+	public String state_Open() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getOpenState());
-		System.out.println("Transition from Close State to Open State");
-		
+		return "Transition from Close State to Open State";
 	}
 
 	@Override
-	public void state_Close() {
+	public String state_Close() {
 		// TODO Auto-generated method stub
-		System.out.println("Error ... Already in Close State");
+		return "Error - Already in Close State";
 	}
 
 	@Override
-	public void state_Stock() {
+	public String state_Stock() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getStockState());
-		System.out.println("Transition from Close State to Stock State");
+		return "Transition from Close State to Stock State";
 		
 	}
 

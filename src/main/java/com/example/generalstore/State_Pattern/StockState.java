@@ -13,24 +13,27 @@ public class StockState implements ShopStateAPI {
 	}
 	
 	@Override
-	public void state_Open() {
+	public String state_Open() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getOpenState());
 		System.out.println("Transition from Stock State to Open State");
-		
+
+		return null;
 	}
 
 	@Override
-	public void state_Close() {
+	public String state_Close() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getCloseState());
 		System.out.println("Transition from Stock State to Close State");
+		return null;
 	}
 
 	@Override
-	public void state_Stock() {
+	public String state_Stock() {
 		// TODO Auto-generated method stub
 		System.out.println("Error ... Already in Stock State");
-		
-	}
+
+        return null;
+    }
 }

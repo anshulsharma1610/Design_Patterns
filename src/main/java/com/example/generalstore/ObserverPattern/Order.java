@@ -39,7 +39,7 @@ public class Order implements OrderStateAPI {
 	public Order() {
 		super();
 		this.id = ++counter;
-		this.deliveryType = DeliveryType.Pickup;
+		this.deliveryType = DeliveryType.InStore;
 		this.state = getAwaitingConfirmationState();
 	}
 
@@ -51,7 +51,7 @@ public class Order implements OrderStateAPI {
 		this.count = count;		
 		this.deliveryType = deliveryType;
 		
-		if(deliveryType==DeliveryType.Pickup) {
+		if(deliveryType==DeliveryType.InStore) {
 			this.shippingCost = 0;
 		}else {
 			this.shippingCost = shippingCost;
@@ -248,28 +248,25 @@ public class Order implements OrderStateAPI {
 
 
 	@Override
-	public void state_Awaiting_OrderConfirmation() {
-
-		this.state.state_Awaiting_OrderConfirmation();
+	public String state_Awaiting_OrderConfirmation() {
+		return this.state.state_Awaiting_OrderConfirmation();
 	}
 
 
 	@Override
-	public void state_OrderConfirmed() {
-		this.state.state_OrderConfirmed();		
+	public String state_OrderConfirmed() {
+		return this.state.state_OrderConfirmed();
 	}
 
 
 	@Override
-	public void state_OrderDispatched() {
-
-		this.state.state_OrderDispatched();
+	public String state_OrderDispatched() {
+		return this.state.state_OrderDispatched();
 	}
 
 
 	@Override
-	public void state_OrderDelivered() {
-
-		this.state.state_OrderDelivered();
-	}	
+	public String state_OrderDelivered() {
+		return this.state.state_OrderDelivered();
+	}
 }

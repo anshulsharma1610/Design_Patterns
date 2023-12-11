@@ -17,7 +17,6 @@ public class DriverController {
         // Initialize the ItemStore when the controller is created
         itemStore = new ItemStore("Best Buy");
     }
-
     @FXML
     private void onAdapterPatternClick() {
         myTextArea.clear();
@@ -32,7 +31,6 @@ public class DriverController {
 
     @FXML
     private void onBuilderClick() {
-//        itemStore.demo("Builder");
         myTextArea.clear();
         List<String> outputList = itemStore.demonstrateBuilderPattern();
         StringBuilder formattedData = new StringBuilder();
@@ -55,13 +53,10 @@ public class DriverController {
 
     @FXML
     private void onDecoratorClick() {
-//        itemStore.demo("Decorator");
-
     }
 
     @FXML
     private void onFacadeClick() {
-//        itemStore.demo("Facade");
         myTextArea.clear();
         List<String> outputList = itemStore.demonstrateFacadePattern();
         StringBuilder formattedData = new StringBuilder();
@@ -73,27 +68,40 @@ public class DriverController {
 
     @FXML
     private void onFactoryClick() {
-//        itemStore.demo("Factory");
-        myTextArea.setText("Factory Pattern Information");
+        myTextArea.clear();
+        List<String> outputList = itemStore.demonstrateFactoryPattern();
+        StringBuilder formattedData = new StringBuilder();
+        for (String line : outputList) {
+            formattedData.append(line).append("\n");
+        }
+        myTextArea.setText(formattedData.toString());
     }
 
     @FXML
     private void onObserverClick() {
-//        itemStore.demo("Observer");
         myTextArea.setText("Observer Pattern Information");
     }
 
     @FXML
     private void onPrototypeClick() {
-//        itemStore.demo("Prototype");
         myTextArea.setText("Prototype Pattern Information");
     }
 
     @FXML
     private void onStateClick() {
-//        itemStore.demo("State");
         myTextArea.clear();
         List<String> outputList = itemStore.demonstrateStatePattern();
+        StringBuilder formattedData = new StringBuilder();
+        for (String line : outputList) {
+            formattedData.append(line).append("\n");
+        }
+        myTextArea.setText(formattedData.toString());
+    }
+
+    @FXML
+    private void onStrategyClick() {
+        myTextArea.clear();
+        List<String> outputList = itemStore.demonstrateStrategyPattern();
         StringBuilder formattedData = new StringBuilder();
         for (String line : outputList) {
             formattedData.append(line).append("\n");

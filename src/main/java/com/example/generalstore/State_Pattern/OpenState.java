@@ -13,25 +13,28 @@ public class OpenState implements ShopStateAPI {
 	}
 	
 	@Override
-	public void state_Open() {
+	public String state_Open() {
 		// TODO Auto-generated method stub
-		System.out.println("Error ... Already in Open State");
-		
+		System.out.println("Error - Already in Open State");
+
+		return null;
 	}
 
 	@Override
-	public void state_Close() {
+	public String state_Close() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getCloseState());
 		System.out.println("Currently in Close State");
+		return null;
 	}
 
 	@Override
-	public void state_Stock() {
+	public String state_Stock() {
 		// TODO Auto-generated method stub
 		itemStore.setState(itemStore.getStockState());
 		System.out.println("Currently in Stock State");
-		
-	}
+
+        return null;
+    }
 
 }

@@ -13,71 +13,53 @@ public class Invoker {
 		orderList.add(order);		
 	}
 
-   public void placeOrders(){
+   public String placeOrders(){
 	   BuyItemCommand buyItemCommand = BuyItemCommand.getInstance();
       for (Item order : orderList) {
     	  System.out.println(buyItemCommand.setItem(order)
          .execute());
+
+		  return buyItemCommand.setItem(order).execute();
       }
       orderList.clear();
+	   return null;
    }
    
-   public void placeOrders(List<Item> itemList){
+   public String placeOrders(List<Item> itemList){
+	   orderList.clear();
 	      for (Item b : itemList) {
 	    	  orderList.add(b);
 	      }
-	      placeOrders();
+	      return placeOrders();
    }
    
    
-   public void rentOrders(){
+   public String rentOrders(){
 	   RentEquipmentCommand rentItemCommand = RentEquipmentCommand.getInstance();
       for (Item order : orderList) {
     	  System.out.println(rentItemCommand.setItem(order)
          .execute());
+		  return rentItemCommand.setItem(order)
+				  .execute();
       }
       orderList.clear();
+	   return null;
    }
    
-   public void rentOrders(List<Item> itemList){
+   public String rentOrders(List<Item> itemList){
+	   orderList.clear();
 	      for (Item b : itemList) {
 	    	  orderList.add(b);
 	      }
-	      rentOrders();
+	   return rentOrders();
    }
-   
-   
-   
-   
 
 	public List<Item> getOrderList() {
 		return orderList;
 	}
-	
 	public void setOrderList(List<Item> orderList) {
 		this.orderList = orderList;
 	}
-   
-   
-   
-   
-   
-   
-   
+
 }
 
-
-//public class CommandPatternDemo {
-//	   public static void main(String[] args) {
-//	      Stock abcStock = new Stock();
-//
-//	      BuyStock buyStockOrder = new BuyStock(abcStock);
-//	      SellStock sellStockOrder = new SellStock(abcStock);
-//
-//	      Broker broker = new Broker();
-//	      broker.takeOrder(buyStockOrder);
-//	      broker.takeOrder(sellStockOrder);
-//
-//	      broker.placeOrders();
-//	   }
-//	}

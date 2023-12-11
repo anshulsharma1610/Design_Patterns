@@ -13,22 +13,22 @@ public class OrderDelivered implements OrderStateAPI {
 	}
 	
 	@Override
-	public void state_Awaiting_OrderConfirmation() {
-		System.out.println("Error ... Order already DELIVERED");
+	public String state_Awaiting_OrderConfirmation() {
+		return "Error - Order already DELIVERED";
 	}
 
 	@Override
-	public void state_OrderConfirmed() {
-		System.out.println("Error ... Order already DELIVERED");	
+	public String state_OrderConfirmed() {
+		return "Error - Order already DELIVERED";
 	}
 
 	@Override
-	public void state_OrderDispatched() {
-		System.out.println("Error ... Order already DELIVERED");
+	public String state_OrderDispatched() {
+		return "Error ... Order already DELIVERED";
 	}
 
 	@Override
-	public void state_OrderDelivered() {
-		System.out.println("Error ... Order already DELIVERED");
+	public String state_OrderDelivered() {
+		return "Error - Order already DELIVERED";
 	}
 }

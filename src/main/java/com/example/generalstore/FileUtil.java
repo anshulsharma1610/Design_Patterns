@@ -110,7 +110,7 @@ public static List<String>  getFileData(String fileName) {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
 
-            out.println("ItemID,ItemName,ItemPrice,ItemCategory,ItemManufact");
+            out.println("Item Name,ItemCategory,ItemPrice, ItemManufacturer");
 
             out.close();
             bw.close();
@@ -180,6 +180,37 @@ public static List<String>  getFileData(String fileName) {
         }
      }
  }
+
+    public static void createOrder(String fileName, List<ItemAPI> items){
+        FileWriter fr= null;
+        BufferedWriter bw = null ;
+        try {
+            fr = new FileWriter(fileName,true);
+            bw = new BufferedWriter(fr);
+            for (ItemAPI item : items) {
+                // Customize the format based on your needs
+//                bw.append(item.getItemID() + ",");
+                bw.append(item.itemDescription() + ",");
+                bw.append(item.getItemPrice() + ",");
+//                bw.append(item.getItemCategory() + ",");
+                bw.append(item.getItemManufact() + "\n");
+            }
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, "error while reading the file", ex);
+        }
+        finally{
+            try {
+                if(bw !=null){
+                    bw.close();
+                }
+                if(fr!= null){
+                    fr.close();
+                }
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "erroe while closing the file", ex);
+            }
+        }
+    }
  
     public static void removeEntryInFile(String fileName, String lineData)
     {

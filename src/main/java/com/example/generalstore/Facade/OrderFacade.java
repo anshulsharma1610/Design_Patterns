@@ -19,9 +19,9 @@ public class OrderFacade {
 	
 	public Order order() {
 		Order order = new Order();
-		ItemDecorator giftdecMed = new GiftDecorator(item);
-		System.out.println(giftdecMed);
-		order.addItem(giftdecMed);
+		ItemDecorator gift = new GiftDecorator(item);
+//		System.out.println(gift);
+		order.addItem(gift);
 		return order;
 	}
 	

@@ -2,7 +2,7 @@ package com.example.generalstore.Facade;
 
 public enum DeliveryType {
 	Delivery,
-	Pickup;
+	InStore;
 	
     public static DeliveryType getDeliveryType(String s) {
     	DeliveryType result = null;
@@ -10,11 +10,11 @@ public enum DeliveryType {
     	case "delivery":
     		result = DeliveryType.Delivery;
     		break;
-	    case "pickup":
-	    	result = DeliveryType.Pickup;
+	    case "in-store":
+	    	result = DeliveryType.InStore;
 	    	break;
 		default:
-			result = DeliveryType.Pickup;
+			result = DeliveryType.InStore;
 			break;
 		}
     	return result;

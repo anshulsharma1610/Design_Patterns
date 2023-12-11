@@ -1,4 +1,6 @@
 package com.example.generalstore;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import com.example.generalstore.Adapter_Pattern.Manufacturer;
 import com.example.generalstore.Adapter_Pattern.ManufacturerObjectAdapter;
 import com.example.generalstore.Builder.EmployeeBuilder;
@@ -27,10 +29,12 @@ public class ItemStore implements ShopStateAPI {
 	
     private String name;
     private List<Item> itemList = new ArrayList<>();
+	private List<Item> itemList2 = new ArrayList<>();
     private List<Person> personList = new ArrayList<>();
     public static DiscountStrategy usingStrategy = DiscountStrategy.NONE;
-    private static final String FILE_NAME = "src/main/java/com/example/generalstore/output/details.csv";
-	
+    private static final String ORDER_FILE = "src/main/java/com/example/generalstore/output/orders.csv";
+	private static final String ITEM_FILE = "src/main/java/com/example/generalstore/output/items.csv";
+
 	private ShopStateAPI openState = new OpenState(this);
 	private ShopStateAPI stockState = new StockState(this);
 	private ShopStateAPI closeState = new CloseState(this);
@@ -123,41 +127,42 @@ public class ItemStore implements ShopStateAPI {
 	}
 
 	@Override
-	public void state_Open() {
+	public String state_Open() {
 		// TODO Auto-generated method stub
 		this.state.state_Open();
-		
+
+		return null;
 	}
 
 	@Override
-	public void state_Close() {
+	public String state_Close() {
 		// TODO Auto-generated method stub
 		this.state.state_Close();
+		return null;
 	}
 
 	@Override
-	public void state_Stock() {
+	public String state_Stock() {
 		// TODO Auto-generated method stub
 		this.state.state_Stock();
+		return null;
 	}
 
 	// Adapter Pattern demonstration
 	public List<String> demonstrateAdapterPattern() {
 		List<String> outputList = new LinkedList<>();
-		FileUtil.getFileData(FILE_NAME);
-		List<Item> itemList = new ArrayList<>();
-		List<Item> itemList2 = new ArrayList<>();
+		FileUtil.getFileData(ITEM_FILE);
 
-		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
+		ItemBuilder itemBuilder = new ItemBuilder(7, "Galaxy s23", 999.99, ItemCategory.Electronics, "Samsung");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 		itemList.add((Item)item);
 		System.out.println(item);
-		FileUtil.appendEntryToFile(FILE_NAME, itemBuilder);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
 
 		// Your Adapter Pattern demonstration code here
 		//Prototype Pattern to clone the object of manufacture
-		outputList.add("***************************************************************************************");
 		outputList.add("Demonstrating of prototype pattern to clone the object of Manufacturer");
+		outputList.add("-------------------------------------------------------------------------");
 		Manufacturer manufacture = Manufacturer.getInstance().clone();
 		manufacture.setManufacturerName("Samsung")
 				.setManufacturerRegistrationId(52).setNoOfManufacturerProductCount(10);
@@ -166,29 +171,56 @@ public class ItemStore implements ShopStateAPI {
 		ManufacturerObjectAdapter manufacturerAdapter = new ManufacturerObjectAdapter(item, manufacture);
 
 		outputList.add(String.valueOf(manufacture));
-		outputList.add("***************************************************************************************");
-		outputList.add("Demonstrating of Adapter pattern to adapt manufacture legacy class with Item Interface and priting their object");
+		outputList.add("\n\nDemonstrating of Adapter pattern to adapt manufacture legacy class with Item Interface and priting their object");
+		outputList.add("-------------------------------------------------------------------------");
 
 		outputList.add(String.valueOf(manufacturerAdapter));
-		outputList.add("***************************************************************************************");
 		return outputList;
 	}
 
 	// Builder Pattern demonstration
 	public List<String> demonstrateBuilderPattern() {
 		List<String> outputList = new LinkedList<>();
+		FileUtil.getFileData(ITEM_FILE);
 
 		// Your Builder Pattern demonstration code here
 		//Builder Pattern and getting object of Builder using Factory and Singleton Pattern
-		outputList.add("***************************************************************************************");
 		outputList.add("Builder Design Pattern Demonstration. Delegating the responsibility of creating Item objects to Item Builder which implements build method and builds item object for us");
 		outputList.add("Using Factory and singleton pattern to get only single instance of Item Builder object");
+		outputList.add("-------------------------------------------------------------------------");
+
 		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 		itemList.add((Item)item);
-		outputList.add(item.toString());
-		FileUtil.appendEntryToFile(FILE_NAME, itemBuilder);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
 
+		itemBuilder = new ItemBuilder(2, "Samsung - 75\" UHD 4K Smart Tizen TV", 549.99, ItemCategory.Appliances, "Samsung");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		itemList.add((Item)item);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
+
+		itemBuilder = new ItemBuilder(3, "Lenovo - Ideapad 1 14.0\" HD Laptop", 119.99, ItemCategory.Computers_Tablets, "Lenovo");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		itemList.add((Item)item);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
+
+		itemBuilder = new ItemBuilder(4, "Canon - EOS R5 Mirrorless Camera", 2999.99, ItemCategory.Cameras, "Canon");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		itemList.add((Item)item);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
+
+		itemBuilder = new ItemBuilder(5, "Apple - AirPods Max", 449.99, ItemCategory.Electronics, "Apple");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		itemList.add((Item)item);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
+
+		itemBuilder = new ItemBuilder(6, "Avengers - Infinity War", 13.99, ItemCategory.Movies_Music, "Marvel");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		itemList2.add((Item)item);
+		FileUtil.appendEntryToFile(ITEM_FILE, itemBuilder);
+
+		outputList.add(itemList.toString());
+		outputList.add(itemList2.toString());
 		return outputList;
 	}
 
@@ -196,52 +228,38 @@ public class ItemStore implements ShopStateAPI {
 	// Command Pattern demonstration
 	public List<String> demonstrateCommandPattern() {
 		List<String> outputList = new LinkedList<>();
-		FileUtil.getFileData(FILE_NAME);
-		List<Item> itemList = new ArrayList<>();
-		List<Item> itemList2 = new ArrayList<>();
 
 		// Your Command Pattern demonstration code here
 		//Command Pattern
 		outputList.add("Demonstration of Command pattern to send the request for all Items orders and print them");
-
+		outputList.add("-------------------------------------------------------------------------");
 		Invoker invoker = new Invoker();
-		invoker.placeOrders(itemList);
-		invoker.rentOrders(itemList2);
-		outputList.add("***************************************************************************************");
-
-		ItemStore itmStr = new ItemStore("Best Buy");
-		EmployeeBuilder emplBuilder = new EmployeeBuilder(7, 27, "Anshul", "Sharma", 50.00);
-		Employee empl = EmployeeFactory.getInstance().getObject(emplBuilder);
-		outputList.add("Using Factory and singleton pattern to get only single instance of Employee Builder object");
-		outputList.add(empl.toString());
-		outputList.add("***************************************************************************************");
-
+		outputList.add(invoker.placeOrders(itemList));
+		outputList.add(invoker.rentOrders(itemList2));
 		return outputList;
-	}
-
-
-	// Decorator Pattern demonstration
-	public void demonstrateDecoratorPattern() {
 	}
 
 	// Facade Pattern demonstration
 	public List<String> demonstrateFacadePattern() {
 		List<String> outputList = new LinkedList<>();
-		FileUtil.getFileData(FILE_NAME);
-		List<Item> itemList = new ArrayList<>();
-		List<Item> itemList2 = new ArrayList<>();
+
+		// Format the date and time to use in the filename
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String timestamp = dateFormat.format(new Date());
+
+		// Create the order file with the current date and time in the filename
+		final String ORDER_FILE = "src/main/java/com/example/generalstore/output/orders_" + timestamp + ".csv";
+		FileUtil.newFile(ORDER_FILE);
 
 		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 
 		outputList.add("Demonstration of Facade pattern and adding Decorator pattern to decorate Items and adding it to our order list");
 		outputList.add("Demonstration of Observer pattern to notify the shipping cost and discount observer of changes as the number of our orders added into order list");
+		outputList.add("-------------------------------------------------------------------------");
 
 		OrderFacade orderFacade = new OrderFacade(item);
 		Order order = orderFacade.order();
-		Order order2 = orderFacade.order();
-
-		outputList.add(order.toString());
 		order.setDeliveryType(DeliveryType.Delivery);
 
 		// Repeated for each itemBuilder and item addition
@@ -250,64 +268,69 @@ public class ItemStore implements ShopStateAPI {
 		order.addItem(item);
 		outputList.add(order.toString());
 		itemList.add((Item)item);
-		FileUtil.appendEntryToFile(FILE_NAME, itemBuilder);
 
-		// ... More itemBuilder and order additions ...
-
-		itemBuilder = new ItemBuilder(6, "Avengers - Infinity War", 13.99, ItemCategory.Movies_Music, "Marvel");
+		itemBuilder = new ItemBuilder(3, "Lenovo - Ideapad 1 14.0\" HD Laptop", 119.99, ItemCategory.Computers_Tablets, "Lenovo");
 		item = ItemFactory.getInstance().getObject(itemBuilder);
-		order2.addItem(item);
-		outputList.add(order2.toString());
+		order.addItem(item);
+		outputList.add(String.valueOf(order));
 		itemList2.add((Item)item);
-		FileUtil.appendEntryToFile(FILE_NAME, itemBuilder);
+		FileUtil.createOrder(ORDER_FILE, order.getItemList());
 
-		outputList.add("***************************************************************************************");
-
+		outputList.add(order.toString());
+		outputList.add(order.getItemListString());
+		outputList.add("Discount: " +  String.valueOf(order.getDiscount()));
+		outputList.add("Shipping Cost: " +  String.valueOf(order.getShippingCost()));
+		outputList.add("Total Order Cost: " +  String.valueOf(order.getOrderCost()));
 		return outputList;
 	}
 
 
 	// Factory Pattern demonstration
-	public void demonstrateFactoryPattern() {
+	public List<String> demonstrateFactoryPattern() {
 		// Your Factory Pattern demonstration code here
+		List<String> outputList = new LinkedList<>();
 
-	}
-
-	// Observer Pattern demonstration
-	public void demonstrateObserverPattern() {
-		// Your Observer Pattern demonstration code here
-	}
-
-	// Prototype Pattern demonstration
-	public void demonstratePrototypePattern() {
-		// Your Prototype Pattern demonstration code here
+		ItemStore itmStr = new ItemStore("Best Buy");
+		EmployeeBuilder emplBuilder = new EmployeeBuilder(7, 27, "Anshul", "Sharma", 50.00);
+		Employee empl = EmployeeFactory.getInstance().getObject(emplBuilder);
+		outputList.add("Using Factory and singleton pattern to get only single instance of Employee Builder object");
+		outputList.add("-------------------------------------------------------------------------");
+		outputList.add(empl.toString());
+		return outputList;
 	}
 
 	// State Pattern demonstration
 	public List<String> demonstrateStatePattern() {
 		List<String> outputList = new LinkedList<>();
-		FileUtil.getFileData(FILE_NAME);
-		List<Item> itemList = new ArrayList<>();
-		List<Item> itemList2 = new ArrayList<>();
-
 		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
 		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
 
 		OrderFacade orderFacade = new OrderFacade(item);
 		Order order = orderFacade.order();
-		Order order2 = orderFacade.order();
+		order.addItem(item);
+
+		itemBuilder = new ItemBuilder(3, "Lenovo - Ideapad 1 14.0\" HD Laptop", 119.99, ItemCategory.Computers_Tablets, "Lenovo");
+		item = ItemFactory.getInstance().getObject(itemBuilder);
+		order.addItem(item);
+
+		order.setDeliveryType(DeliveryType.Delivery);
 
 		outputList.add("Demonstration of state pattern completed life cycle of order transitioning from ordered to delivered state");
 
-		order.state_Awaiting_OrderConfirmation();
-		order.state_OrderConfirmed();
-		order.state_OrderDispatched();
-		order.state_OrderDelivered();
+		outputList.add(order.state_Awaiting_OrderConfirmation());
+		outputList.add(order.state_OrderConfirmed());
+		outputList.add(order.state_OrderDispatched());
+		outputList.add(order.state_OrderDelivered());
 		outputList.add("Order states transitioned successfully.");
+		return outputList;
+	}
 
-		outputList.add("***************************************************************************************");
-
+	public List<String> demonstrateStrategyPattern() {
 		// Strategy Pattern Demonstration
+		List<String> outputList = new LinkedList<>();
+		ItemBuilder itemBuilder = new ItemBuilder(1, "iPhone 15", 999.99, ItemCategory.Electronics, "Apple");
+		ItemAPI item = ItemFactory.getInstance().getObject(itemBuilder);
+
 		outputList.add("Demonstration of strategy pattern to show different discounts applied to original price and final price after student and employee discounts");
 		outputList.add("Item before discount: \n" + item.toString());
 		double price;
@@ -317,7 +340,6 @@ public class ItemStore implements ShopStateAPI {
 			price = ((Item)item).runStrategy();
 			outputList.add("Item price after discount during sale: " + strategy + " - " + price);
 		}
-
 		return outputList;
 	}
 }

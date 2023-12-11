@@ -13,24 +13,23 @@ public class OrderDispatched implements OrderStateAPI {
 	}
 	
 	@Override
-	public void state_Awaiting_OrderConfirmation() {
-		System.out.println("Error ... Order already CONFIRMED");
+	public String state_Awaiting_OrderConfirmation() {
+		return "Error - Order already CONFIRMED";
 	}
 
 	@Override
-	public void state_OrderConfirmed() {
-		System.out.println("Error ... Order already CONFIRMED");	
+	public String state_OrderConfirmed() {
+		return "Error ... Order already CONFIRMED";
+}
+
+	@Override
+	public String state_OrderDispatched() {
+		return "Error - Order already in DISPATCH state";
 	}
 
 	@Override
-	public void state_OrderDispatched() {
-		System.out.println("Error ... Order already in DISPATCH state");
-	}
-
-	@Override
-	public void state_OrderDelivered() {
+	public String state_OrderDelivered() {
 		order.setState(order.getOrderDelivered());
-		System.out.println("SUCCESS!! Order successfully DELIVERED");
+		return "SUCCESS!! Order successfully DELIVERED";
 	}
-
 }
